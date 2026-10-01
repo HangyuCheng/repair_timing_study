@@ -1,0 +1,34 @@
+local:
+  vllm:
+    api_key: ''
+    chat_endpoint: /v1/chat/completions
+    models:
+      - name: Qwen2.5-Coder-7B
+        source_model: Qwen/Qwen2.5-Coder-7B-Instruct
+        model_id: qwen2.5-coder:7b
+        base_url: http://127.0.0.1:8001/v1
+        launch_script: scripts/serve_qwen25_coder_7b.sh
+      - name: Qwen2.5-Coder-32B
+        source_model: Qwen/Qwen2.5-Coder-32B-Instruct
+        model_id: qwen2.5-coder:32b
+        base_url: http://127.0.0.1:8002/v1
+        launch_script: scripts/serve_qwen25_coder_32b.sh
+cloud:
+  - name: GPT-4o-mini
+    provider: openai-compatible
+    base_url: https://api.openai.com/v1
+    chat_endpoint: /chat/completions
+    model_id: gpt-4o-mini
+    api_key: ''
+  - name: Gemini-2.0-Flash
+    provider: gemini
+    base_url: https://generativelanguage.googleapis.com/v1beta
+    chat_endpoint: /models/{model_id}:generateContent
+    model_id: gemini-2.0-flash
+    api_key: ''
+  - name: DeepSeek-V2.5
+    provider: openai-compatible
+    base_url: https://api.deepseek.com/v1
+    chat_endpoint: /chat/completions
+    model_id: deepseek-v2.5
+    api_key: ''

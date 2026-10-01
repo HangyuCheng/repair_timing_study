@@ -1,0 +1,15 @@
+tools:
+  gumtree: gumtree
+  joern_parse: joern-parse
+  joern_export: joern-export
+  joern_required: true
+projects:
+  - name: nifi
+    repo_url: https://github.com/apache/nifi.git
+    local_repo: /absolute/path/to/nifi
+    primary_language: Java
+    github_stars: 4000
+    tutorial_or_homework: false
+    main_branch: auto
+    history_start: '2015-01-01T00:00:00Z'
+    history_end: '2025-12-01T00:00:00Z'

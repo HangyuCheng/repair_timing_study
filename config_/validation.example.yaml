@@ -1,0 +1,37 @@
+defaults:
+  timeout_seconds: 1800
+projects:
+  nifi:
+    jdk_home: /absolute/path/to/jdk
+bugs:
+  '1':
+    module: nifi-commons/nifi-site-to-site-client
+    compile_command: ['./mvnw', '-pl', 'nifi-commons/nifi-site-to-site-client', '-am', '-DskipTests', 'compile']
+    test_compile_command: ['./mvnw', '-pl', 'nifi-commons/nifi-site-to-site-client', '-DskipTests', 'test-compile']
+    trigger_command: ['./mvnw', '-pl', 'nifi-commons/nifi-site-to-site-client', '-Dtest=TriggeringTest', 'test']
+    regression_command: ['./mvnw', '-pl', 'nifi-commons/nifi-site-to-site-client', 'test']
+    expected_trigger_failures:
+      jit:
+        failure_reason: TriggeringTest exposes the target defect in the JIT state
+        expected_exit_codes: [1]
+        match: all
+        required_patterns:
+          - '(?i)TriggeringTest'
+          - '(?i)(AssertionError|expected:.+but was:)'
+        forbidden_patterns:
+          - '(?i)No tests were executed'
+          - '(?i)Tests run:\s*0'
+      delay:
+        failure_reason: TriggeringTest exposes the same target defect in the delayed state
+        expected_exit_codes: [1]
+        match: all
+        required_patterns:
+          - '(?i)TriggeringTest'
+          - '(?i)(AssertionError|expected:.+but was:)'
+        forbidden_patterns:
+          - '(?i)No tests were executed'
+          - '(?i)Tests run:\s*0'
+    triggering_tests:
+      - source: test-assets/1/TriggeringTest.java
+        jit_target: nifi-commons/nifi-site-to-site-client/src/test/java/TriggeringTest.java
+        delay_target: nifi-commons/nifi-site-to-site-client/src/test/java/TriggeringTest.java

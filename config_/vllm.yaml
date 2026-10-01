@@ -1,0 +1,17 @@
+api_key: ''
+context_window: 32768
+models:
+  - name: Qwen2.5-Coder-7B
+    source_model: Qwen/Qwen2.5-Coder-7B-Instruct
+    model_id: qwen2.5-coder:7b
+    host: 127.0.0.1
+    port: 8001
+    tensor_parallel_size: 1
+    base_url: http://127.0.0.1:8001/v1
+  - name: Qwen2.5-Coder-32B
+    source_model: Qwen/Qwen2.5-Coder-32B-Instruct
+    model_id: qwen2.5-coder:32b
+    host: 127.0.0.1
+    port: 8002
+    tensor_parallel_size: 4
+    base_url: http://127.0.0.1:8002/v1

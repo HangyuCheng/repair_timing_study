@@ -1,0 +1,31 @@
+project_collection:
+  api_url: https://api.github.com
+  token_env: GITHUB_TOKEN
+  query: 'language:Java stars:>3000 fork:false archived:false is:public'
+  min_stars_exclusive: 3000
+  min_history_days_exclusive: 730
+  min_commits_exclusive: 5000
+  api_timeout_seconds: 30
+  clone_timeout_seconds: 7200
+  refresh_existing_clones: true
+  history_start: '2015-01-01T00:00:00Z'
+  history_end: '2025-12-01T00:00:00Z'
+  exclude_terms:
+    - assignment
+    - coursework
+    - demo
+    - demonstration
+    - exercise
+    - homework
+    - learning
+    - sample
+    - student
+    - teaching
+    - tutorial
+  manual_exclusions: {}
+
+tools:
+  gumtree: gumtree
+  joern_parse: joern-parse
+  joern_export: joern-export
+  joern_required: true

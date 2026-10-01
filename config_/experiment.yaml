@@ -1,0 +1,37 @@
+candidate_budget: 10
+ks: [1, 5, 10]
+states: [jit, delay]
+contexts: [method, class]
+strategies: [zero-shot, cot]
+temperatures: [0.0, 0.5, 1.0]
+models:
+  - name: GPT-4o-mini
+    provider: openai-compatible
+    model_id: gpt-4o-mini
+    api_key: ''
+    api_key_env: OPENAI_API_KEY
+    base_url: https://api.openai.com/v1
+  - name: Gemini-2.0-Flash
+    provider: gemini
+    model_id: gemini-2.0-flash
+    api_key: ''
+    api_key_env: GEMINI_API_KEY
+    base_url: https://generativelanguage.googleapis.com/v1beta
+  - name: DeepSeek-V2.5
+    provider: openai-compatible
+    model_id: deepseek-v2.5
+    api_key: ''
+    api_key_env: DEEPSEEK_API_KEY
+    base_url: https://api.deepseek.com/v1
+  - name: Qwen2.5-Coder-7B
+    provider: vllm
+    model_id: qwen2.5-coder:7b
+    api_key: jitbench-local
+    base_url: http://127.0.0.1:8001/v1
+    timeout_seconds: 1800
+  - name: Qwen2.5-Coder-32B
+    provider: vllm
+    model_id: qwen2.5-coder:32b
+    api_key: jitbench-local
+    base_url: http://127.0.0.1:8002/v1
+    timeout_seconds: 3600
